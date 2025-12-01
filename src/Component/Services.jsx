@@ -1,15 +1,15 @@
 import React from "react";
 import "./Services.css";
-import theme_pattern from "../assets/pattern-img.svg";
+import { FaCode } from "react-icons/fa";
 import Services_Data from "../assets/Services_data.js";
 import { FaArrowRightLong } from "react-icons/fa6";
 
 const Services = () => {
   return (
-    <div  id="services"  className="services">
+    <div id="services" className="services">
       <div className="services-title">
         <h1>My Services</h1>
-        <img src={theme_pattern} alt="Pattern-img" />
+        <FaCode className="theme-pattern" />
       </div>
       <div className="services-container">
         {Services_Data.map((service, index) => {
@@ -20,7 +20,9 @@ const Services = () => {
               <p>{service.s_desc}</p>
               <div className="services-readmore">
                 <p>Read More</p>
-        <i><FaArrowRightLong /></i>
+                <i>
+                  <FaArrowRightLong />
+                </i>
               </div>
             </div>
           );
