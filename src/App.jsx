@@ -7,10 +7,14 @@ import Services from "./Component/Services";
 import Mywork from "./Component/Mywork";
 import Contact from "./Component/Contact";
 import Footer from "./Component/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const App = () => {
   return (
     <>
-    <Cursor/>
+      <ToastContainer />
+      <Cursor />
       <Navbar />
       <Hero />
       <About />
