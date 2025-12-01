@@ -5,7 +5,6 @@ import { FiMail } from "react-icons/fi";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { IoLocationSharp } from "react-icons/io5";
 const Contact = () => {
-
   const onSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -19,20 +18,19 @@ const Contact = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accept: "application/json"
+        Accept: "application/json",
       },
-      body: json
+      body: json,
     }).then((res) => res.json());
 
     if (res.success) {
       alert(res.message);
+      event.target.reset();
     }
-
   };
 
-
   return (
-    <div  id="contact"  className="contact">
+    <div id="contact" className="contact">
       <div className="contact-title">
         <h1>Get in Touch</h1>
         <img src={Pattern_img} alt="Pattern-image" />
@@ -47,20 +45,27 @@ const Contact = () => {
           </p>
           <div className="contact-details">
             <div className="contact-detail">
-            <i><FiMail /></i>
+              <i>
+                <FiMail />
+              </i>
               <p>abc@gmail.com</p>
             </div>
             <div className="contact-detail">
-             <i> <FaPhoneVolume /></i>
+              <i>
+                {" "}
+                <FaPhoneVolume />
+              </i>
               <p>+91-2345-234532</p>
             </div>
             <div className="contact-detail">
-              <i><IoLocationSharp /></i>
+              <i>
+                <IoLocationSharp />
+              </i>
               <p>India</p>
             </div>
           </div>
         </div>
-        <form   onSubmit={onSubmit} className="contact-right">
+        <form onSubmit={onSubmit} className="contact-right">
           <label htmlFor="">Your Name</label>
           <input
             type="text"
@@ -81,7 +86,7 @@ const Contact = () => {
             rows="8"
             placeholder="Enter your message"
           ></textarea>
-          <button  type="submit" className="contact-submit">
+          <button type="submit" className="contact-submit">
             {" "}
             Submit Now
           </button>
