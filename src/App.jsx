@@ -1,5 +1,5 @@
 import React from "react";
-import Cursor from "./Component/gsap/cursor";
+import Cursor from "./Component/gsap/Cursor";
 import Navbar from "./Component/Navbar";
 import Hero from "./Component/Hero";
 import About from "./Component/About";
