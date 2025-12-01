@@ -9,11 +9,12 @@ import Contact from "./Component/Contact";
 import Footer from "./Component/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { Analytics } from "@vercel/analytics/react";
 const App = () => {
   return (
     <>
       <ToastContainer />
+      <Analytics />
       <Cursor />
       <Navbar />
       <Hero />
