@@ -4,6 +4,7 @@ import Pattern_img from "../assets/pattern-img.svg";
 import { FiMail } from "react-icons/fi";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { IoLocationSharp } from "react-icons/io5";
+import { toast } from "react-toastify";
 const Contact = () => {
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -24,7 +25,7 @@ const Contact = () => {
     }).then((res) => res.json());
 
     if (res.success) {
-      alert(res.message);
+      toast.success(res.message);
       event.target.reset();
     }
   };
