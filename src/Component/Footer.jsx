@@ -1,7 +1,7 @@
 import React from "react";
 import "./Footer.css";
 import { FaUser } from "react-icons/fa";
-import { FaUser } from "react-icons/fa";
+
 const Footer = () => {
   return (
     <footer className="footer">
