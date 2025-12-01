@@ -124,3 +124,13 @@
     display: block;
   }
 }
+
+@media (max-width: 1024px) {
+  .navbar {
+    margin: 20px 50px;
+  }
+  .nav-menu {
+    gap: 30px;
+    font-size: 18px;
+  }
+}

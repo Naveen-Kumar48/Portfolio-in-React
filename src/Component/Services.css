@@ -20,7 +20,7 @@
   right: 0;
   z-index: -1;
   font-size: 50px;
-  color: #da7c25;
+  fill: url(#theme-gradient);
   opacity: 0.5;
 }
 .services-format {

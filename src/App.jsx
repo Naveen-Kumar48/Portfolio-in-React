@@ -13,6 +13,14 @@ import { Analytics } from "@vercel/analytics/react";
 const App = () => {
   return (
     <>
+      <svg width="0" height="0" style={{ position: "absolute" }}>
+        <defs>
+          <linearGradient id="theme-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="#df8908" />
+            <stop offset="100%" stopColor="#b415ff" />
+          </linearGradient>
+        </defs>
+      </svg>
       <ToastContainer />
       <Analytics />
       <Cursor />

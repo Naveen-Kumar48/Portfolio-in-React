@@ -102,3 +102,13 @@
     border-radius: 40px;
   }
 }
+
+@media (max-width: 1024px) {
+  .Hero h1 {
+    font-size: 70px;
+  }
+  .Hero img {
+    height: 28rem;
+    width: auto;
+  }
+}
