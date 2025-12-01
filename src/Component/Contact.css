@@ -14,11 +14,14 @@
   font-size: 80px;
   font-weight: 600;
 }
-.contact-title img {
+.contact-title .theme-pattern {
   position: absolute;
   bottom: 0;
   right: 0;
   z-index: -1;
+  font-size: 60px;
+  color: #da7c25;
+  opacity: 0.5;
 }
 .contact-section {
   display: flex;
