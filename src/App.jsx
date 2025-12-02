@@ -10,6 +10,7 @@ import Footer from "./Component/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 const App = () => {
   return (
     <>
@@ -23,6 +24,7 @@ const App = () => {
       </svg>
       <ToastContainer />
       <Analytics />
+      <SpeedInsights/>
       <Cursor />
       <Navbar />
       <Hero />
