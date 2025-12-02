@@ -1,63 +1,98 @@
 import React from "react";
 import "./About.css";
-import { FaCode } from "react-icons/fa";
+import theme_pattern from "../assets/pattern-img.svg";
 import profile_img from "../assets/profile-img.jpg";
+import { motion } from "framer-motion";
+
 const About = () => {
   return (
     <div id="about" className="about">
-      <div className="about-title">
+      <motion.div
+        className="about-title"
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         <h1>About me</h1>
-        <FaCode className="theme-pattern" />
-      </div>
-      <section className="about-section">
-        <div className="about-left">
-          <img src={profile_img} className="profile-img" alt="ProfileImage" />
-        </div>
+        <img src={theme_pattern} alt="" />
+      </motion.div>
+      <div className="about-section">
+        <motion.div
+          className="about-left"
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <img src={profile_img} className="about-img" alt="ProfileImage" />
+        </motion.div>
         <div className="about-right">
-          <div className="about-para">
+          <motion.div
+            className="about-para"
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
             <p>
-              I’m a frontend developer with a strong foundation in modern web
-              technologies. Over the past year, I’ve been continuously learning
-              new tech stacks and improving my skills through hands-on projects
-              and self-driven practice
+              I am an experienced Frontend Developer with over a decade of
+              professional expertise in the field. Throughout my career, I have
+              had the privilege of collaborating with prestigious organizations,
+              contributing to their success and growth.
             </p>
             <p>
-              I’m passionate about frontend development and eager to apply my
-              skills to real-world projects. I bring enthusiasm, creativity, and
-              a strong willingness to learn and grow with every opportunity.
+              My passion for frontend development is not only reflected in my
+              extensive experience but also in the enthusiasm and dedication I
+              bring to each project.
             </p>
-          </div>
+          </motion.div>
           <div className="about-skills">
-            <div className="about-skill">
-              <p>HTML & CSS</p> <hr style={{ width: "50%" }} />{" "}
-            </div>
-            <div className="about-skill">
-              <p>React JS</p> <hr style={{ width: "80%" }} />{" "}
-            </div>
-            <div className="about-skill">
-              <p>Java</p> <hr style={{ width: "60%" }} />{" "}
-            </div>
-            <div className="about-skill">
-              <p>Next Js</p> <hr style={{ width: "20%" }} />{" "}
-            </div>
+            {[
+              { skill: "HTML & CSS", width: "80%" },
+              { skill: "JavaScript", width: "80%" },
+              { skill: "React js", width: "80%" },
+              { skill: "Node js", width: "60%" },
+              { skill: "Java", width: "80%" },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                className="about-skill"
+                initial={{ width: "0%" }}
+                whileInView={{ width: "100%" }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <p>{item.skill}</p>{" "}
+                <motion.hr
+                  initial={{ width: "0%" }}
+                  whileInView={{ width: item.width }}
+                  transition={{ duration: 1, delay: 0.5 }}
+                  viewport={{ once: true }}
+                />{" "}
+              </motion.div>
+            ))}
           </div>
         </div>
-      </section>
+      </div>
       <div className="about-achievements">
-        <div className="about-achievement">
-          <h1>1</h1>
-          <p>YEARS OF EXPERIENCE</p>
-        </div>
-        <hr />
-        <div className="about-achievement">
-          <h1>4+</h1>
-          <p>Projects</p>
-        </div>
-        <hr />
-        <div className="about-achievement">
-          <h1>React</h1>
-          <p>Developer</p>
-        </div>
+        {[
+          { count: "1+", label: "YEARS OF EXPERIENCE" },
+          { count: "10+", label: "PROJECTS COMPLETED" },
+          { count: "5+", label: "HAPPY CLIENTS" },
+        ].map((item, index) => (
+          <motion.div
+            key={index}
+            className="about-achievement"
+            initial={{ scale: 0.5, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, delay: index * 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h1>{item.count}</h1>
+            <p>{item.label}</p>
+          </motion.div>
+        ))}
       </div>
     </div>
   );

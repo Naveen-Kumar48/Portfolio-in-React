@@ -7,9 +7,11 @@
   margin: 80px 170px;
 }
 .about-img {
-  border-radius: 20px;
+  border-radius: 18px; /* Slightly smaller than container */
   height: 32rem;
-  border: 2px solid aliceblue;
+  width: auto;
+  z-index: 1;
+  background-color: #161513; /* Match body bg just in case */
 }
 .about-title {
   position: relative;
@@ -31,6 +33,34 @@
 .about-section {
   display: flex;
   gap: 80px;
+}
+.about-left {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  width: fit-content;
+  flex-shrink: 0;
+  padding: 4px; /* Thickness of the border */
+}
+.about-left::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(#df8908, #b415ff, #df8908);
+  animation: rotate 4s linear infinite;
+  z-index: 0;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 .about-right {
   display: flex;
@@ -102,6 +132,19 @@
   transform: scale(1.12);
   transition: 0.5s;
 }
+@media (max-width: 1200px) {
+  .about {
+    margin: 50px 80px;
+    gap: 60px;
+  }
+  .about-title h1 {
+    font-size: 60px;
+  }
+  .about-img {
+    height: 28rem;
+  }
+}
+
 @media (max-width: 768px) {
   .about {
     gap: 50px;
@@ -121,7 +164,15 @@
     gap: 30px;
   }
   .about-left {
-    display: none;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  .about-img {
+    height: auto;
+    width: 80%;
+    max-width: 300px;
   }
   .about-para {
     font-size: 16px;

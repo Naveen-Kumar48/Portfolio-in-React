@@ -11,9 +11,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import SmoothScroll from "./gsap/SmoothScroll";
 const App = () => {
   return (
-    <>
+    <SmoothScroll>
       <svg width="0" height="0" style={{ position: "absolute" }}>
         <defs>
           <linearGradient id="theme-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -24,7 +25,7 @@ const App = () => {
       </svg>
       <ToastContainer />
       <Analytics />
-      <SpeedInsights/>
+      <SpeedInsights />
       <Cursor />
       <Navbar />
       <Hero />
@@ -33,7 +34,7 @@ const App = () => {
       <Mywork />
       <Contact />
       <Footer />
-    </>
+    </SmoothScroll>
   );
 };
 

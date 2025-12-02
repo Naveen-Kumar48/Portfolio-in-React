@@ -72,6 +72,19 @@
   transform: scale(1.05);
   transition: 0.4s;
 }
+@media (max-width: 1200px) {
+  .services {
+    margin: 50px 80px;
+    gap: 60px;
+  }
+  .services-title h1 {
+    font-size: 50px;
+  }
+  .services-format {
+    padding: 40px;
+  }
+}
+
 @media (max-width: 768px) {
   .services {
     align-items: center;

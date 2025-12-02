@@ -18,9 +18,35 @@
   transition: 0.3s ease-in-out;
 }
 
-.Hero img {
+.hero-img-container {
   margin-top: 150px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  width: fit-content;
+  padding: 4px;
 }
+.hero-img-container::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(#df8908, #b415ff, #df8908);
+  animation: rotate 4s linear infinite;
+  z-index: 0;
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .Hero h1 {
   text-align: center;
   width: 70%;
@@ -28,9 +54,11 @@
   font-weight: 600;
 }
 .profile-img {
-  border-radius: 20px;
+  border-radius: 18px;
   height: 32rem;
-  border: 2px solid aliceblue;
+  z-index: 1;
+  background-color: #161513;
+  /* border: 2px solid aliceblue; removed */
 }
 
 .Hero h1 span {

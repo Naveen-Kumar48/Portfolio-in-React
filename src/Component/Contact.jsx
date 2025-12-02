@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import "./Contact.css";
 import { FiMail } from "react-icons/fi";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { IoLocationSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { FaCode } from "react-icons/fa";
+import Typed from "typed.js";
 
 const Contact = () => {
+  const el = useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ["Let's Talk"],
+      typeSpeed: 50,
+      backSpeed: 50,
+      backDelay: 1000,
+      loop: true,
+    });
+
+    return () => {
+      typed.destroy();
+    };
+  }, []);
+
   const onSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
@@ -39,7 +56,9 @@ const Contact = () => {
       </div>
       <section className="contact-section">
         <div className="contact-left">
-          <h1>Let's Talk</h1>
+          <h1>
+            <span ref={el}></span>
+          </h1>
           <p>
             I'm currently avaliable to take on new projects, so feel free to
             send me a message about anything that you want me to work on. You
