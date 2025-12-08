@@ -10,7 +10,7 @@ const Hero = () => {
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ["I'm Naveen Kumar", "Learning Frontend Development in React"],
+      strings: ["I'm Naveen Kumar", "Mern-Stack", "Frontend Developer", "React.js Enthusiast"],
       startDelay: 300,
       typeSpeed: 100,
       backSpeed: 100,
