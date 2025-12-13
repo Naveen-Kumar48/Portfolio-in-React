@@ -1,50 +1,63 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useState } from "react";
 import "./Contact.css";
 import { FiMail } from "react-icons/fi";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { IoLocationSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { FaCode } from "react-icons/fa";
-import Typed from "typed.js";
+
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 const Contact = () => {
-  const el = useRef(null);
+  const captchaRef = useRef(null);
+  const [token, setToken] = useState(null);
 
-  useEffect(() => {
-    const typed = new Typed(el.current, {
-      strings: ["Let's Talk"],
-      typeSpeed: 50,
-      backSpeed: 50,
-      backDelay: 1000,
-      loop: true,
-    });
-
-    return () => {
-      typed.destroy();
-    };
-  }, []);
+  const onHCaptchaChange = (token) => {
+    console.log("Captcha token set:", token);
+    setToken(token);
+  };
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    console.log("Form submitting...");
     const formData = new FormData(event.target);
 
     formData.append("access_key", "2206b175-aaeb-4898-9255-f85c28977e04");
+    if (token) {
+      formData.append("h-captcha-response", token);
+    } else {
+      console.warn("No captcha token present");
+    }
 
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
+    console.log("Form payload:", json);
 
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: json,
-    }).then((res) => res.json());
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      }).then((res) => res.json());
 
-    if (res.success) {
-      toast.success(res.message);
-      event.target.reset();
+      console.log("API Response:", res);
+
+      if (res.success) {
+        toast.success(res.message);
+        event.target.reset();
+        setToken(null);
+        if (captchaRef.current) {
+          captchaRef.current.resetCaptcha();
+        }
+      } else {
+        toast.error(res.message || "Something went wrong.");
+      }
+    } catch (error) {
+      console.error("Submission error:", error);
+      toast.error("An error occurred. Please try again.");
     }
   };
 
@@ -56,9 +69,7 @@ const Contact = () => {
       </div>
       <section className="contact-section">
         <div className="contact-left">
-          <h1>
-            <span ref={el}></span>
-          </h1>
+          <h1>Let's Talk</h1>
           <p>
             I'm currently avaliable to take on new projects, so feel free to
             send me a message about anything that you want me to work on. You
@@ -69,14 +80,14 @@ const Contact = () => {
               <i>
                 <FiMail />
               </i>
-              <p>abc@gmail.com</p>
+              <p>kumarnaveen123@example.com</p>
             </div>
             <div className="contact-detail">
               <i>
                 {" "}
                 <FaPhoneVolume />
               </i>
-              <p>+91-2345-234532</p>
+              <p>+91 8979******</p>
             </div>
             <div className="contact-detail">
               <i>
@@ -107,6 +118,16 @@ const Contact = () => {
             rows="8"
             placeholder="Enter your message"
           ></textarea>
+
+          <div className="captcha-container">
+            <HCaptcha
+              sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+              reCaptchaCompat={false}
+              onVerify={onHCaptchaChange}
+              ref={captchaRef}
+            />
+          </div>
+
           <button type="submit" className="contact-submit">
             {" "}
             Submit Now
