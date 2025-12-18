@@ -166,13 +166,13 @@
   .about-left {
     display: flex;
     justify-content: center;
-    width: 100%;
-    margin-bottom: 30px;
+    width: fit-content; /* Shrink to fit image + border */
+    max-width: 80%;
+    margin: 0 auto 30px auto;
   }
   .about-img {
     height: auto;
-    width: 80%;
-    max-width: 300px;
+    width: 100%; /* Fill container */
   }
   .about-para {
     font-size: 16px;
