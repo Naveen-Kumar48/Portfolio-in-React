@@ -78,8 +78,8 @@ const About = () => {
       <div className="about-achievements">
         {[
           { count: "1+", label: "YEARS OF EXPERIENCE" },
-          { count: "10+", label: "PROJECTS COMPLETED" },
-          { count: "5+", label: "HAPPY CLIENTS" },
+          { count: "5+", label: "PROJECTS COMPLETED" },
+          { count: "2+", label: "HAPPY CLIENTS" },
         ].map((item, index) => (
           <motion.div
             key={index}
