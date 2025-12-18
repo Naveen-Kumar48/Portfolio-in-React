@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import "./Navbar.css";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 import { IoMenu, IoClose } from "react-icons/io5";
+import { motion } from "framer-motion";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -62,7 +63,12 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`navbar ${isScrolled ? "scrolled" : ""}`}>
+      <motion.nav
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className={`navbar ${isScrolled ? "scrolled" : ""}`}
+      >
         <img src="/image.png" className="logo" alt="Logo" />
         <IoMenu onClick={openmenu} className="nav-mob-open" />
         <ul ref={menuRef} className="nav-menu">
@@ -123,7 +129,7 @@ const Navbar = () => {
             Connect With Me
           </AnchorLink>
         </div>
-      </nav>
+      </motion.nav>
     </>
   );
 };

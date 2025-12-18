@@ -5,6 +5,7 @@ import { FaPhoneVolume } from "react-icons/fa6";
 import { IoLocationSharp } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { FaCode } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 
@@ -63,12 +64,24 @@ const Contact = () => {
 
   return (
     <div id="contact" className="contact">
-      <div className="contact-title">
+      <motion.div
+        className="contact-title"
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+      >
         <h1>Get in Touch</h1>
         <FaCode className="theme-pattern" />
-      </div>
+      </motion.div>
       <section className="contact-section">
-        <div className="contact-left">
+        <motion.div
+          className="contact-left"
+          initial={{ x: -50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
           <h1>Let's Talk</h1>
           <p>
             I'm currently avaliable to take on new projects, so feel free to
@@ -96,8 +109,15 @@ const Contact = () => {
               <p>India</p>
             </div>
           </div>
-        </div>
-        <form onSubmit={onSubmit} className="contact-right">
+        </motion.div>
+        <motion.form
+          onSubmit={onSubmit}
+          className="contact-right"
+          initial={{ x: 50, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
           <label htmlFor="">Your Name</label>
           <input
             type="text"
@@ -132,7 +152,7 @@ const Contact = () => {
             {" "}
             Submit Now
           </button>
-        </form>
+        </motion.form>
       </section>
     </div>
   );

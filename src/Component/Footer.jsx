@@ -1,10 +1,17 @@
 import React from "react";
 import "./Footer.css";
 import { FaUser } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const Footer = () => {
   return (
-    <footer className="footer">
+    <motion.footer
+      className="footer"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+    >
       <div className="footer-top">
         <div className="footer-top-left">
           <img src="/image.png" className="f-logo" alt="Footer logo" />
@@ -32,7 +39,7 @@ const Footer = () => {
           <p>Connect with me</p>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 
